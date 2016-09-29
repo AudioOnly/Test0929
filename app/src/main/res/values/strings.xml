@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Test</string>
+    <!--Dialog-->
+    <string name="dl_progress">进行中,请稍后...</string>
+    <string name="dl_share_progress">分享中,请稍后...</string>
+    <string name="dl_cancel">取消</string>
+
+    <!--时间-->
+    <string name="time_moment">刚刚</string>
+    <string name="time_unknow">未知</string>
+    <string name="time_min_fmt">%1$s分钟前</string>
+    <string name="time_today">今天</string>
+    <string name="time_ysd">昨天</string>
+    <string name="time_qsd">前天</string>
+    <string name="time_month_fmt">MM月dd日</string>
+
+    <!--验证码-->
+    <string name="code_time_fmt">剩余%1$s秒</string>
+    <!--ContentStatusView-->
+    <string name="csv_again">重新加载</string>
+    <string name="csv_empty">当前页没有数据</string>
+    <!--PageLoadingView-->
+    <string name="plv_loading">正在加载下一页...</string>
+    <string name="plv_no_data">没有更多数据了</string>
+</resources>

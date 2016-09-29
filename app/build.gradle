@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+
+android {
+
+    productFlavors{
+        dev{
+            applicationId "dev.com.vision.yao.test"
+            versionName "1.0-dev"
+        }
+        baidu{
+            applicationId "baidu.com.vision.yao.test"
+            versionName "1.0-baidu"
+        }
+        google{
+            applicationId "google.com.vision.yao.test"
+            versionName "1.0-google"
+        }
+    }
+//    替换AndroidManifest中meta-data中的${UMENG_CHANNEL_VALUE}占位符
+    productFlavors.all { flavor ->
+        manifestPlaceholders.put("UMENG_CHANNEL_VALUE",name)
+//        name为  froductFlavors中渠道名 例如 dev、baidu、google等
+    }
+
+
+
+
+    //编译sdk版本
+    compileSdkVersion 23
+    //构建工具版本
+    buildToolsVersion "24.0.0"
+    //默认设置
+    defaultConfig {
+        applicationId "com.vision.yao.test"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: 'dev']
+    }
+    //签名设置
+    signingConfigs{
+        config{
+            keyAlias 'test_key'
+            keyPassword '123456789'
+            storeFile file('../test_key.jks')
+            storePassword '123456789'
+        }
+    }
+    //构建类型，常用的为 release,debug
+    buildTypes {
+        release {
+            minifyEnabled true //启动混淆
+            zipAlignEnabled true//启动压缩
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆文件
+            signingConfig signingConfigs.config
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (output.outputFile != null && output.outputFile.name.endsWith('.apk')
+                            && 'release'.equals(variant.buildType.name)) {
+                        def apkFile = new File(
+                                output.outputFile.getParent(),
+                                "Test_${variant.flavorName}_v${variant.versionName}_${buildTime()}.apk")
+                        output.outputFile = apkFile
+                    }
+                }
+            }
+        }
+        debug{
+            minifyEnabled false
+            signingConfig signingConfigs.config
+        }
+    }
+
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        javaMaxHeapSize "6g"
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:multidex:1.0.0'
+
+    //Retrofit,OkHttp
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+    //RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.trello:rxlifecycle:0.6.1'
+    compile 'com.trello:rxlifecycle-components:0.6.1'
+    //ButterKnife
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    //其它
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.766770719:StatusBar:1.0.0'
+    compile('com.afollestad.material-dialogs:core:0.8.6.1@aar') {
+        transitive = true
+    }
+    //下载
+    compile('com.liulishuo.filedownloader:library:1.0.0') {
+        transitive = false
+    }
+    //引入smarttablayout
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    //引入 scrollablelayout
+    compile 'com.github.w446108264:ScrollableLayout:1.0.3'
+
+}
+
+def buildTime(){
+    def date=new Date()
+    def formatteredDate=date.format("yyyy-MM-dd");
+    return formatteredDate;
+
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.vision.yao.test.views.ContainerViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </com.vision.yao.test.views.ContainerViewPager>
+
+        <View style="@style/DividerHorizontal" />
+
+        <RadioGroup
+            android:id="@+id/rg_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingTop="4dp">
+
+            <RadioButton
+                android:id="@+id/first"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/ic_main_tab_status"
+                android:gravity="center_horizontal"
+                android:tag="0"
+                android:text="首页"
+
+
+                android:textColor="@color/text_main_tab"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/second"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/ic_main_tab_found"
+                android:gravity="center_horizontal"
+                android:text="随便"
+                android:textColor="@color/text_main_tab"
+                android:textSize="12sp"
+                android:tag="1"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0" />
+
+            <RadioButton
+                android:id="@+id/found"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/ic_main_tab_msg"
+                android:gravity="center_horizontal"
+                android:text="你猜"
+                android:textColor="@color/text_main_tab"
+                android:textSize="12sp"
+                android:tag="2"/>
+
+            <RadioButton
+                android:id="@+id/five"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:button="@null"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/ic_main_tab_me"
+                android:gravity="center_horizontal"
+                android:text="滚蛋"
+                android:textColor="@color/text_main_tab"
+                android:textSize="12sp"
+                android:tag="3"/>
+
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:paddingBottom="7dp"
+        android:weightSum="5">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_main_tab_middle" />
+    </LinearLayout>
+
+
+</FrameLayout>

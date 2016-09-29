@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--用于填充StatusBar颜色的控件ID-->
+    <item name="v_fitsSystemWindows" type="id" />
+</resources>

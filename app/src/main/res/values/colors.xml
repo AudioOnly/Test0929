@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--背景-->
+    <color name="bg">#f4f4f4</color>
+    <!--标题背景颜色-->
+    <color name="title_bg">#fbfbfb</color>
+    <!--分割线-->
+    <color name="divider">#EEE</color>
+    <!--进度条颜色-->
+    <color name="progress">#FDB34E</color>
+</resources>

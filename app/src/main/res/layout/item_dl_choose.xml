@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="?selectableItemBackground"
+        android:gravity="center"
+        android:paddingLeft="@dimen/layout_left"
+        android:paddingRight="@dimen/layout_right"
+        android:text="选择项"
+        android:textColor="#333"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/v_divider_l"
+        style="@style/DividerHorizontal"
+        android:layout_gravity="top" />
+
+    <View
+        android:id="@+id/v_divider_s"
+        style="@style/DividerHorizontal"
+        android:layout_gravity="top"
+        android:layout_marginLeft="@dimen/layout_left"
+        android:layout_marginRight="@dimen/layout_right" />
+
+</FrameLayout>
